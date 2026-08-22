@@ -1,22 +1,34 @@
-// Last updated: 17/08/2026, 09:31:43
-class Solution {
-public:
-    string addBinary(string a, string b) {
-        string result;
-        int i = a.length() - 1, j = b.length()-1;
-        int carry = 0;
-
-        while(i>=0 || j>=0){
-            int sum = carry;
-
-            if(i>=0) sum += a[i--] - '0';
-            if(j>=0) sum += b[j--] - '0';
-
-            carry = sum > 1 ? 1 : 0;
-            result += to_string(sum%2);
-        }
-        if(carry) result += to_string(carry);
-        reverse(result.begin(), result.end());
-        return result;
-    }
-};
+// Last updated: 22/08/2026, 11:09:21
+1class Solution {
+2public:
+3    string addBinary(string a, string b) {
+4        int i = a.size() - 1;
+5        int j = b.size() - 1;
+6        int carry = 0;
+7
+8        string ans = "";
+9
+10        while (i >= 0 || j >= 0 || carry) {
+11
+12            int sum = carry;
+13
+14            if (i >= 0) {
+15                sum += a[i] - '0';
+16                i--;
+17            }
+18
+19            if (j >= 0) {
+20                sum += b[j] - '0';
+21                j--;
+22            }
+23
+24            ans += (sum % 2) + '0';
+25
+26            carry = sum / 2;
+27        }
+28
+29        reverse(ans.begin(), ans.end());
+30
+31        return ans;
+32    }
+33};
