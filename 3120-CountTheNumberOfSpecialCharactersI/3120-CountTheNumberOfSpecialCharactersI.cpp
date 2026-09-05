@@ -1,0 +1,30 @@
+// Last updated: 05/09/2026, 10:08:13
+class Solution {
+public:
+    int numberOfSpecialChars(string word) {
+
+        unordered_set<char> lower;
+        unordered_set<char> upper;
+
+        for(char ch : word){
+
+            if(islower(ch)){
+                lower.insert(ch);
+            }
+            else{
+                upper.insert(ch);
+            }
+        }
+
+        int count = 0;
+
+        for(char ch = 'a'; ch <= 'z'; ch++){
+
+            if(lower.count(ch) && upper.count(toupper(ch))){
+                count++;
+            }
+        }
+
+        return count;
+    }
+};
