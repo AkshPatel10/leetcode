@@ -1,0 +1,23 @@
+// Last updated: 05/09/2026, 10:08:30
+class Solution {
+public:
+    int maximumLengthSubstring(string s) {
+        unordered_map<char, int> freq;
+
+        int left = 0;
+        int ans = 0;
+
+        for (int right = 0; right < s.size(); right++) {
+
+            freq[s[right]]++;
+
+            while (freq[s[right]]>2) {
+                freq[s[left]]--;
+                left++;
+            }
+
+            ans = max(ans, right - left + 1);
+        }
+        return ans;
+    }
+};
