@@ -1,0 +1,18 @@
+// Last updated: 05/09/2026, 10:09:50
+class Solution {
+public:
+    int minimumCost(vector<int>& cost) {
+        int n = cost.size();
+        sort(cost.begin(), cost.end(), greater<int>());
+
+        int total = 0;
+
+        for(int i = 0; i < n; i++){
+            if(i%3 != 2){
+                total += cost[i];
+            }
+        }
+
+        return total;
+    }
+};
