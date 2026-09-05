@@ -1,0 +1,19 @@
+// Last updated: 05/09/2026, 10:07:12
+class Solution {
+public:
+    vector<vector<int>> reverseSubmatrix(vector<vector<int>>& grid, int x, int y, int k) {
+        int top = x;
+        int bottom = x+k-1;
+
+        while(top<bottom){
+            for(int col=y; col<y+k; col++){
+                int temp = grid[top][col];
+                grid[top][col] = grid[bottom][col];
+                grid[bottom][col] = temp;
+            }
+            top++;
+            bottom--;
+        }
+        return grid;
+    }
+};
