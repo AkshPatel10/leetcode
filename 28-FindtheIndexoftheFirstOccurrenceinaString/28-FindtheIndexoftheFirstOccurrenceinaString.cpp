@@ -1,29 +1,17 @@
-// Last updated: 20/08/2026, 08:02:32
+// Last updated: 04/11/2026, 10:36:07
 1class Solution {
 2public:
 3    int strStr(string haystack, string needle) {
-4
-5        if (needle.size() > haystack.size()) {
-6            return -1;
-7        }
-8
-9        for (int i = 0; i <= haystack.size() - needle.size(); i++) {
+4        int m = haystack.length();
+5        int n = needle.length();
+6
+7        for(int i = 0; i < m; i++){
+8            for(int j = 0; j < n; j++){
+9                if(haystack[i+j] != needle[j]) break;
 10
-11            bool found = true;
-12
-13            for (int j = 0; j < needle.size(); j++) {
-14
-15                if (haystack[i + j] != needle[j]) {
-16                    found = false;
-17                    break;
-18                }
-19            }
-20
-21            if (found) {
-22                return i;
-23            }
-24        }
-25
-26        return -1;
-27    }
-28};
+11                if(j == n-1) return i;
+12            }
+13        }
+14        return -1;
+15    }
+16};
